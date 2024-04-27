@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="w-screen h-screen flex items-center justify-center">
+      <div class="w-[1172px] px-[10px] h-full flex flex-col items-center">
+        <div class="w-[70%] flex flex-col gap-5 items-center">
+          <img
+            src="networking.gif"
+            class="w-[56px] h-[56px]"
+            alt="networking"
+          />
+          <h2 class="font-bold text-[32px] text-center leading-8 title">
+            Hoạt động tiêu biểu từ cộng đồng giáo dục
+          </h2>
+          <p class="text-[20px] text-center content">
+            Hình ảnh được chính những giáo viên từ khắp 3 miền ghi lại trong quá
+            trình giảng dạy, dạy học ứng dụng công nghệ SHub Classroom.
+          </p>
+          <!-- <img src="https://shub.edu.vn/images/landing/ver3/image-section/carousel3.png" alt=""> -->
+        </div>
+        <div class="w-full px-5 relative">
+          <div class="swiper-container overflow-hidden pt-3">
+            <div class="swiper-wrapper">
+              <!-- Nếu cần navigation -->
+            </div>
+          </div>
+          <div
+            style="z-index: 10"
+            class="btn button-prev shadow-xl absolute left-[-7px] top-[50%] translate-y-[-50%] w-[36px] h-[36px] flex items-center justify-center p-2 border bg-white rounded-full"
+          >
+            <i class="fa fa-solid fa-arrow-left text-black"></i>
+          </div>
+          <div
+            style="z-index: 10"
+            class="btn button-next shadow-xl absolute right-[-7px] top-[50%] translate-y-[-50%] w-[36px] h-[36px] flex items-center justify-center p-2 border bg-white rounded-full"
+          >
+            <i class="fa fa-solid fa-arrow-right text-black"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageUrls = [
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel1.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel2.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel3.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel4.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel5.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel6.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel1.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel2.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel3.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel4.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel5.png",
+          "https://shub.edu.vn/images/landing/ver3/image-section/carousel6.png",
+        ];
+
+        // Function to append images to the swiper-wrapper
+        const appendImagesToSwiper = () => {
+          const swiperWrapper = document.querySelector(".swiper-wrapper");
+
+          imageUrls.forEach((url, index) => {
+            const img = document.createElement("img");
+            img.src = url;
+            img.style.zIndex = 1;
+            img.className = `swiper-slide w-full z-1 ${
+              index % 2 === 0 ? "mt-[30px]" : "mb-[30px]"
+            }`; // Add swiper-slide class to each img
+            swiperWrapper.appendChild(img);
+          });
+        };
+
+        // Call the function to append images when the DOM is ready
+        appendImagesToSwiper();
+
+        // Initialize Swiper with responsive settings
+        const swiper = new Swiper(".swiper-container", {
+          // Optional parameters
+          direction: "horizontal",
+          loop: true,
+          slidesPerGroup: 1,
+          spaceBetween: 30,
+
+          navigation: {
+            nextEl: ".button-next",
+            prevEl: ".button-prev",
+          },
+
+          // Responsive breakpoints
+          breakpoints: {
+            // When window width is >= 768px
+            500: {
+              slidesPerView: 3,
+            },
+            // When window width is >= 1200px
+            768: {
+              slidesPerView: 6,
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
